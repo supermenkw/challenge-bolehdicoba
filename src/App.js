@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Cards, Chart } from './components/';
+import { Typography, createMuiTheme, responsiveFontSizes , ThemeProvider } from '@material-ui/core';
+import styles from './app.module.css';
+import { fetchData } from './api';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    state = {
+        data: {}
+    }
+
+    async componentDidMount() {
+        const fetchedData = await fetchData();
+
+        this.setState({
+            data: fetchedData,
+        })
+    }
+
+    render() { 
+        const { data } = this.state
+        let theme = createMuiTheme();
+
+        theme = responsiveFontSizes(theme)
+
+        return (
+            <div className={styles.container}>
+                <ThemeProvider theme={theme}>
+                    <Typography variant='h3' component='h1'>C😷VID-19</Typography>
+                </ThemeProvider>
+                <Cards data={data} />
+                <Chart/>
+            </div>
+        );
+    }
 }
 
 export default App;
