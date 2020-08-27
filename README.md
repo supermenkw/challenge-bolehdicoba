@@ -2,7 +2,7 @@
 
 Install Dependencies
 
-### `yard add`
+### `yarn add`
 
 ## Available Scripts
 
