@@ -13,7 +13,7 @@ const Chart = () => {
         }
 
         fetchAPI();
-    })
+    },[]);
 
     const LineChart = (
         dailyData.length ?

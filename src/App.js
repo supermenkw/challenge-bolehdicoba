@@ -29,7 +29,7 @@ class App extends React.Component {
                     <Typography variant='h3' component='h1'>C😷VID-19</Typography>
                 </ThemeProvider>
                 <Cards data={data} />
-                <Chart/>
+                <Chart />
             </div>
         );
     }
